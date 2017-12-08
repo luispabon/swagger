@@ -1,3 +1,16 @@
+## Note: 
+
+This is a fork of WakeOnWeb's swagger validation component. It is a pretty good package, but fairly limited and very 
+slow moving - it probably was made to serve the needs of WakeOnWeb's projects.
+
+I intend to push this forward without the limitations of requiring upstream approval as there are many gaps in
+functionality and test coverage. This will be for v2.x.
+
+Version 1.x (up to 1.0.4) is essentially the same as WakeOnWeb's. Any versions greater than that might depart considerably
+and break BC.
+
+# Original README: 
+
 # WakeOnWeb Swagger Validation Component [![Build Status](https://travis-ci.org/WakeOnWeb/swagger.svg?branch=master)](https://travis-ci.org/WakeOnWeb/swagger)
 
 The WakeOnWeb Swagger Validation Component is an extensible component for validating API data using the 
