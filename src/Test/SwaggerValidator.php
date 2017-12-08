@@ -72,7 +72,7 @@ class SwaggerValidator
      */
     public function validateResponseFor(ResponseInterface $actual, $method, $path, $code)
     {
-        $operation = $this->getOperation($method, $path);
+        $operation = $this->getOperation($method, $this->stripBasePath($path));
 
         $response = $operation
             ->getResponses()
@@ -114,11 +114,23 @@ class SwaggerValidator
      */
     public function validateRequestFor(RequestInterface $actual, $method, $path)
     {
-        $operation = $this->getOperation($method, $path);
+        $operation = $this->getOperation($method, $this->stripBasePath($path));
 
         foreach ($this->requestValidators as $validator) {
             $validator->validateRequest($operation, $actual);
         }
+    }
+
+    /**
+     * Removes the base path, if present, off the given path.
+     *
+     * @param string $path
+     *
+     * @return string
+     */
+    private function stripBasePath($path)
+    {
+        return \str_replace($this->swagger->getBasePath(), '', $path);
     }
 
     /**

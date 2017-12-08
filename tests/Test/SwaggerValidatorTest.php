@@ -239,6 +239,41 @@ JSON;
     }
 
     /**
+     * @test
+     * @expectedException \InvalidArgumentException
+     */
+    public function testValidateResponseForHandlesBaseUrl()
+    {
+        $swagger = <<<JSON
+{
+    "swagger": "2.0",
+    "basePath": "/foo",
+    "info": {
+        "title": "test",
+        "version": "1.0"
+    },
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/tests": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get the list of all the tests cases."
+                    }
+                }
+            }
+        }
+    }
+}
+JSON;
+
+        $validator = new SwaggerValidator($this->buildSwagger($swagger));
+        $validator->validateResponseFor($this->prophesize(ResponseInterface::class)->reveal(), 'LINK', '/foo/tests', 200);
+    }
+
+    /**
      * @param string $swagger
      *
      * @return Swagger
