@@ -1,8 +1,12 @@
 {
-    "name": "wakeonweb/swagger",
+    "name": "luispabon/swagger",
     "license": "MIT",
     "type": "library",
     "authors": [
+        {
+            "name": "Luis Pabon",
+            "email": "luis.pabon@auronconsulting.co.uk"
+        },
         {
             "name": "Quentin Schuler",
             "email": "q.schuler@wakeonweb.com"
