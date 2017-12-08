@@ -49,5 +49,8 @@
     "suggest": {
         "justinrainbow/json-schema": "Validates your requests and responses against a JSON Schema.",
         "symfony/psr-http-message-bridge": "Allows for usage of Symfony HTTP Foundation requests and responses."
+    },
+    "conflict": {
+        "wakeonweb/swagger": "Original library - conflicts with us because we haven't changed our base NS yet"
     }
 }
