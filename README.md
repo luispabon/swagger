@@ -6,8 +6,11 @@ slow moving - it probably was made to serve the needs of WakeOnWeb's projects.
 I intend to push this forward without the limitations of requiring upstream approval as there are many gaps in
 functionality and test coverage. This will be for v2.x.
 
-Version 1.x (up to 1.0.4) is essentially the same as WakeOnWeb's. Any versions greater than that might depart considerably
-and break BC.
+## Roadmap:
+
+    * Version 1.0.x (up to 1.0.4) is essentially the same as WakeOnWeb's.
+    * Version 1.1.x will contain any fixes beyond WakeOnWeb
+    * Version 2.0.x will go well beyond the original library with OA3 support, framework integrations etc
 
 # Original README: 
 
