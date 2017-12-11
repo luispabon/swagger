@@ -635,7 +635,7 @@ class SwaggerFactory
         );
 
         $vendorSpecifics = array_filter(array_keys($spec), function ($key) {
-            return preg_match('/^x-/', $key) === 1;
+            return 0 === \strpos($key, "x-");
         });
 
         foreach ($vendorSpecifics as $vendorSpecific) {
