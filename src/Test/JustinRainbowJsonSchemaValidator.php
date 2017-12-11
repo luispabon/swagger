@@ -19,8 +19,8 @@ class JustinRainbowJsonSchemaValidator implements ContentValidatorInterface
      */
     public function validateContent(Schema $schema, MessageInterface $actual)
     {
-        $schema = json_decode($schema->getJsonSchemaAsJson());
-        $content = json_decode($actual->getBody());
+        $schema = \json_decode($schema->getJsonSchemaAsJson());
+        $content = \json_decode($actual->getBody());
 
         $schemaStorage = new SchemaStorage();
         $schemaStorage->addSchema('file://json-schema', $schema);
@@ -32,7 +32,11 @@ class JustinRainbowJsonSchemaValidator implements ContentValidatorInterface
         if (!$validator->isValid()) {
             throw JsonSchemaException::fromValidationErrors(array_map(
                 function (array $error) {
-                    return $error['message'];
+                    return (new ValidationError())
+                        ->setConstraint($error['constraint'])
+                        ->setMessage($error['message'])
+                        ->setPointer($error['pointer'])
+                        ->setProperty($error['property']);
                 },
                 $validator->getErrors()
             ));

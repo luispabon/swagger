@@ -8,6 +8,18 @@ namespace WakeOnWeb\Component\Swagger\Test\Exception;
 class JsonSchemaException extends ContentValidatorException
 {
     /**
+     * @var array
+     */
+    private $errors = [];
+
+    public function __construct($message = "", array $errors = [])
+    {
+        parent::__construct($message);
+
+        $this->errors = $errors;
+    }
+
+    /**
      * @param string[] $errors
      *
      * @return JsonSchemaException
@@ -16,10 +28,14 @@ class JsonSchemaException extends ContentValidatorException
     {
         $message = 'The validated document contains validation errors:';
 
-        foreach ($errors as $error) {
-            $message .= PHP_EOL.'  - '.$error;
-        }
+        return new JsonSchemaException($message, $errors);
+    }
 
-        return new JsonSchemaException($message);
+    /**
+     * @return array
+     */
+    public function getErrors()
+    {
+        return $this->errors;
     }
 }
