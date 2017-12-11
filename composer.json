@@ -1,6 +1,7 @@
 {
     "name": "luispabon/swagger-validator",
     "license": "MIT",
+    "description": "Openapi v2 validation library for PHP",
     "type": "library",
     "authors": [
         {
@@ -51,6 +52,6 @@
         "symfony/psr-http-message-bridge": "Allows for usage of Symfony HTTP Foundation requests and responses."
     },
     "conflict": {
-        "wakeonweb/swagger": "Original library - conflicts with us because we haven't changed our base NS yet"
+        "wakeonweb/swagger": "<=2.0"
     }
 }
