@@ -48,6 +48,6 @@ class JustinRainbowJsonSchemaValidator implements ContentValidatorInterface
      */
     public function support($mimeType)
     {
-        return $mimeType === 'application/json';
+        return \preg_match('/^application\/(.*)?json;?(.*)?/i', $mimeType) > 0;
     }
 }
