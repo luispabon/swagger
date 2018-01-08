@@ -240,7 +240,7 @@ JSON;
 
     /**
      * @test
-     * @expectedException \WakeOnWeb\Component\Swagger\Test\Exception\MethodNotAllowedForPath
+     * @expectedException \WakeOnWeb\Component\Swagger\Test\Exception\MethodNotAllowedForPathException
      */
     public function testValidateResponseForThrowsAnExceptionWhenTheMethodIsNotFoundForPath()
     {

@@ -2,7 +2,7 @@
 
 namespace WakeOnWeb\Component\Swagger\Test\Exception;
 
-class MethodNotAllowedForPath extends SwaggerValidatorException
+class MethodNotAllowedForPathException extends SwaggerValidatorException
 {
     /**
      * @param string $method
