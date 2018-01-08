@@ -240,6 +240,40 @@ JSON;
 
     /**
      * @test
+     * @expectedException \WakeOnWeb\Component\Swagger\Test\Exception\MethodNotAllowedForPath
+     */
+    public function testValidateResponseForThrowsAnExceptionWhenTheMethodIsNotFoundForPath()
+    {
+        $swagger = <<<JSON
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "test",
+        "version": "1.0"
+    },
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/tests": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get the list of all the tests cases."
+                    }
+                }
+            }
+        }
+    }
+}
+JSON;
+
+        $validator = new SwaggerValidator($this->buildSwagger($swagger));
+        $validator->validateResponseFor($this->prophesize(ResponseInterface::class)->reveal(), 'POST', '/tests', 200);
+    }
+
+    /**
+     * @test
      * @expectedException \InvalidArgumentException
      */
     public function testValidateResponseForHandlesBaseUrl()

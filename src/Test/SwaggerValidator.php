@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use WakeOnWeb\Component\Swagger\Specification\Operation;
 use WakeOnWeb\Component\Swagger\Specification\Swagger;
 use WakeOnWeb\Component\Swagger\Test\Exception\ContentTypeException;
+use WakeOnWeb\Component\Swagger\Test\Exception\MethodNotAllowedForPath;
 use WakeOnWeb\Component\Swagger\Test\Exception\StatusCodeException;
 use WakeOnWeb\Component\Swagger\Test\Exception\SwaggerValidatorException;
 use WakeOnWeb\Component\Swagger\Test\Exception\UnknownResponseCodeException;
@@ -153,7 +154,12 @@ class SwaggerValidator
             throw UnknownPathException::fromUnknownPath($path);
         }
 
-        return $pathItem->getOperationFor($method);
+        $operation = $pathItem->getOperationFor($method);
+        if ($operation === null) {
+            throw MethodNotAllowedForPath::fromNotAllowedMethod($method);
+        }
+
+        return $operation;
     }
 
     /**
